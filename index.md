@@ -2,6 +2,7 @@
 
 ```markdown
 
-[stopwatch](https://mrkdh16.github.io/Javascript-Projects/stopwatch.html)
+Project List:
+- [stopwatch](stopwatch.html)
 
 ```
