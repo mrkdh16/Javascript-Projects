@@ -1,3 +1,3 @@
 ## Javascript
 
-- [stopwatch](stopwatch.html)
+- [stopwatch](https://mrkdh16.github.io/simple-projects/stopwatch.html)
