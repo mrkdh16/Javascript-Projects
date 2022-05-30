@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <header>Stopwatch</header>
+        <meta charset="utf-8">
+        <style>
+            #button_Start{
+                width:60px;
+	            height: 40px;
+	            color: black;
+	            background: white;
+	            font-size: 16px;
+	            border:none;
+                border-radius: 20px;
+                box-shadow: 0 4px 16px rgba(0,79,255,0.3);
+                transition:0.3s;
+                position: absolute;
+                left: 45%;
+                top:480px;
+                transform: translate(-50%,-50%);
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            #button_Pause{
+                width:60px;
+	            height: 40px;
+	            color: black;
+	            background: white;
+	            font-size: 16px;
+	            border:none;
+                border-radius: 20px;
+                box-shadow: 0 4px 16px rgba(0,79,255,0.3);
+                transition:0.3s;
+                position: absolute;
+                left:50%;
+                top:480px;
+                transform: translate(-50%,-50%);
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            #button_Reset{
+                width:60px;
+	            height: 40px;
+	            color: black;
+	            background: white;
+	            font-size: 16px;
+	            border:none;
+                border-radius: 20px;
+                box-shadow: 0 4px 16px rgba(0,79,255,0.3);
+                transition:0.3s;
+                position: absolute;
+                left:55%;
+                top:480px;
+                transform: translate(-50%,-50%);
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            #bold{
+                font-weight: bold;
+            }
+            #result{
+                text-align: center;
+                font-size: 100px;
+                margin-top: 300px;
+                color:black;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="result"></div>
+        <script>
+            document.getElementById("result").innerHTML="00:00:00";
+            var min=0;
+            var sec=0;
+            var msec=0;
+            var isactive = false;
+
+            function pause(){
+                isactive = false;
+                clearTimeout(st);
+            }
+            function reset(){
+                min=0;
+                sec=0;
+                msec=0;
+                var t = min+"0:"+sec+"0:0"+msec;
+                document.getElementById("result").innerHTML = t;
+            }
+
+            function start(){
+                if (!isactive)
+                    stopwatch();
+                isactive = true;
+            }
+
+            function stopwatch(){
+                msec+=1;
+                if(msec>=100){
+                    msec=0;
+                    sec+=1;
+                }
+                if(sec>=60){
+                    sec=0;
+                    min+=1;
+                }
+                if(min>=99){
+                    min=0;
+                }
+                
+                var tmin = min,tsec=sec,tmsec=msec;
+
+                if(min<10){
+                    tmin = "0"+min;
+                }
+                if(sec<10){
+                    tsec = "0"+sec;
+                }
+                if(msec<10){
+                    tmsec = "0"+msec;
+                }
+
+                var t = tmin+":"+tsec+":"+tmsec;
+                document.getElementById("result").innerHTML = t;
+                st =  setTimeout('stopwatch()',10);
+            }
+
+        </script>
+        <button id='button_Start' onclick="start()"><div id='bold'>S</div></button>
+        <button id='button_Pause' onclick="pause()"><div id='bold'>P</div></button>
+        <button id='button_Reset' onclick="reset()"><div id='bold'>R</div></button>
+    </body>
+</html>
